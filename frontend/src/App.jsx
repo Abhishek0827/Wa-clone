@@ -24,7 +24,10 @@ export default function App() {
   const socket = useRef(null);
 
   useEffect(() => {
-    socket.current = io(LINK);
+    const socket = io(LINK, {
+  withCredentials: true,
+  transports: ["websocket", "polling"],
+});
 
     socket.current.on("connect", () => {
       console.log("Connected:", socket.current.id);
