@@ -30,7 +30,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://wa-clone-1-njv4.onrender.com/",
     methods: ["GET", "POST"],
     credentials: true,
   },
