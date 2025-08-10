@@ -23,48 +23,30 @@ export default function App() {
   const isMobile = useMediaQuery({ maxWidth: 500 });
   const socket = useRef(null);
 
-  useEffect(() => {
-    const socket = io(LINK, {
-  withCredentials: true,
-  transports: ["websocket", "polling"],
-});
+useEffect(() => {
+  socket.current = io(LINK, {
+    transports: ["websocket"], // force WS, avoids polling upgrade problems on Render
+    withCredentials: true      // only if backend CORS has credentials: true
+  });
 
-    socket.current.on("connect", () => {
-      console.log("Connected:", socket.current.id);
-    });
+  socket.current.on("connect", () => {
+    console.log("Connected:", socket.current.id);
+  });
 
-    // socket.current.on("receive_message", (data) => {
-    //   alert(1);
-    //   // console.log("📥 Received:", data);
+  // Example listener
+  socket.current.on("receive_message", (data) => {
+    console.log("📥 Received:", data);
+    setChat((prev) => [...prev, data]);
+  });
 
-    //   // Send back delivery confirmation
-    //   socket.current.emit("message_delivered", {
-    //     messageId: data.messageId,
-    //     senderSocketId: data.senderSocketId,
-    //   });
-
-    //   setChat((prev) => [
-    //     ...prev,
-    //     {
-    //       ...data,
-    //       status: "delivered", // will be updated after delivery ack
-    //     },
-    //   ]);
-    // });
-
-    // socket.current.on("message_delivered_ack", (data) => {
-    //   console.log(`✅ Delivered: ${data.messageId}`);
-    //   setChat((prev) =>
-    //     prev.map((msg) =>
-    //       msg.messageId === data.messageId ? { ...msg, status: "read" } : msg
-    //     )
-    //   );
-    // });
-
-    return () => {
+  return () => {
+    if (socket.current) {
       socket.current.disconnect();
-    };
-  }, []);
+    }
+  };
+}, []);
+
+
 
   const sendMessage = async (msg) => {
     if (!selectedPerson) return;
