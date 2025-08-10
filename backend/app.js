@@ -30,10 +30,13 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://wa-clone-1-njv4.onrender.com",
+    origin: process.env.NODE_ENV === "production"
+      ? "https://wa-clone-1-njv4.onrender.com" // your frontend
+      : "http://localhost:5173", // local dev
     methods: ["GET", "POST"],
     credentials: true,
   },
+  transports: ["websocket"],
 });
 
 io.on("connection", (socket) => {
