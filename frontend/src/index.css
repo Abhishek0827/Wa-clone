@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+#root {
+  --one-side-border: rgba(0, 0, 0, 0.701);
+  --bg-default: #262626;
+}
+.Loading {
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+main {
+  /* border: 1px solid ; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--bg-default);
+}
+main > section {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+}
+#loginScreen form {
+  color: white;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-self: center;
+  margin: 0px auto;
+}
+#loginScreen form div {
+  display: flex;
+  gap: 10px;
+
+  font-size: 20px;
+}
+#loginScreen form div h4 {
+  font-weight: 100;
+}
+#loginScreen form button {
+  margin: auto;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 20px;
+  width: 100%;
+  background-color: #00ff0dff;
+  color: white;
+  border: none;
+  outline: none;
+}
+#contactList {
+  border-right: 1px solid var(--one-side-border);
+  width: 25%;
+  height: 100vh;
+  background-color: var(--bg-default);
+}
+
+.contactListName {
+  /* border: 1px solid white; */
+  border-radius: 7px;
+  margin: 4px auto;
+  padding-left: 20px;
+  height: 50px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.contactListName:hover {
+  background-color: #ffffff25;
+}
+.contactListName img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+.contactListName h1 {
+  font-size: 17px;
+  font-weight: lighter;
+  color: white;
+}
+.contactListName h6 {
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.529);
+}
+#chatWindow {
+  color: white;
+  width: 75%;
+  height: 100vh;
+  background-color: var(--bg-default);
+}
+.defaultWindow {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.defaultWindow h1 {
+  margin: 10px 0px;
+  font-size: 19px;
+  font-weight: 400;
+}
+.defaultWindow h4 {
+  margin: 2px 0px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.523);
+  font-weight: lighter;
+}
+
+#chatWindowMain > .menuBar {
+  border-bottom: 1px solid var(--one-side-border);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+#chatWindowMain > .menuBar > .left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#chatWindowMain > .menuBar > .left > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#chatWindowMain > .menuBar > .left > div > img {
+  height: 45px;
+  border-radius: 50px;
+}
+#chatWindowMain > .menuBar > .left > div .name {
+  font-size: 17px;
+}
+#chatWindowMain > .menuBar > .left > div .mobile {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: #ffffff5d;
+}
+
+.messageSection {
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  height: 83vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+/* .messageSection h1{
+  display: block;
+} */
+ .messageSection > div  h5{
+  font-size: 12px;
+  font-weight: 100;
+ }
+.textIputSection {
+  height: 7.3vh;
+}
+.textIputSection > form {
+  /* background-color: var(--one-side-border); */
+  height: 100%;
+  display: flex;
+}
+.textIputSection > form > input {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0px 20px;
+  width: 96%;
+  background-color: transparent !important;
+  color: white;
+  font-size: 14px;
+}
+.textIputSection > form > button {
+  width: 4%;
+  background-color: rgba(255, 0, 0, 0);
+  border: none;
+  color: white;
+  outline: none;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 500px) {
+  #postLogin {
+    overflow: hidden;
+  }
+  #contactList {
+    width: 100vw !important;
+    /* background-color: red; */
+    position: absolute;
+    order: 01;
+  }
+  .contactListName {
+    margin: 10px auto;
+  }
+  #chatWindowMain > .menuBar > .left > div > img {
+    height: 35px;
+  }
+  #chatWindowMain > .menuBar > .left > div .name {
+    font-weight: 400;
+  }
+  #chatWindow {
+    /* background-color: blue; */
+    width: 100vw;
+    position: absolute;
+    /* display: none; */
+  }
+  .textIputSection {
+  height: 8vh;
+}
+  .textIputSection > form > #messageInput {
+    padding: 0px 10px;
+    width: 92%;
+  }
+  .textIputSection > form > button {
+    width: 10%;
+    font-size: 17px;
+  }
+}
