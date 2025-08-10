@@ -8,7 +8,8 @@ import ContactList from "./component/conatctList";
 import ChatWindow from "./component/chatWindow";
 
 export default function App() {
-  const LINK = "http://localhost:5000";
+  // const LINK = "http://localhost:5000";
+  const LINK = "https://wa-clone-bfhi.onrender.com";
 
   const [Login, setLogin] = useState(false);
   const [account, setAccount] = useState({ loaded: false, data: null });
